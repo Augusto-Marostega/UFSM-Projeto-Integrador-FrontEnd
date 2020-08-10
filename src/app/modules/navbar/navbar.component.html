@@ -1,0 +1,10 @@
+<p>navbar works!</p>
+
+
+<app-nav-cli *ngIf="tipo_usuario === 'cliente'"></app-nav-cli>
+<app-nav-func *ngIf="tipo_usuario === 'funcionario'"></app-nav-func>
+<app-nav-sem-login *ngIf="tipo_usuario === 'naoLogado'"></app-nav-sem-login>
+
+
+
+

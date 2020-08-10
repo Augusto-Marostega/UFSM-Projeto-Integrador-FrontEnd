@@ -1,0 +1,53 @@
+<div class="container">
+    <div *ngIf="erro == true">
+        <div class="alert alert-danger" role="alert">
+            {{msg}}
+        </div>
+    </div>
+
+    <div *ngIf="sucess == true">
+        <div class="alert alert-success" role="alert">
+            {{msg}}
+        </div>
+    </div>
+    <br/>
+    <div class="content" role="main">
+        <div class="form-group">
+            <div class="">
+                <label for="search-text">Filtrar ingrediente pelo nome:</label>
+                <input type="search" class="card border border-primary form-control" id="search-text" aria-describedby="search-text"
+                    [(ngModel)]="searchText" placeholder="Digite o texto para filtrar" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <button type="submit" class="btn btn-success mb-3" [routerLink]="['cad-ingrediente']">Cadastrar novo
+            ingrediente</button>
+    </div>
+
+    <div class="">
+        <table class="table table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Opção</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ingrediente of ingredientes | appFilter: searchText">
+                    <th scope="row">{{ingrediente.id}}</th>
+                    <td>{{ingrediente.nome}}</td>
+                    <td>{{ingrediente.descricao}}</td>
+                    <td><button type="submit" class="btn btn-primary"
+                            [routerLink]="['edit-ingrediente', ingrediente.id]">Editar</button>
+                        <button type="submit" class="btn btn-danger ml-2"
+                            (click)="excluirConfirmar(ingrediente)">Excluir ingrediente</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
