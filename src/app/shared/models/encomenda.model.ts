@@ -1,4 +1,5 @@
 import { Cliente } from './cliente.model';
+import { Doce } from './doce.model';
 
 export class Encomenda{
     constructor(public id? : number,
@@ -6,6 +7,6 @@ export class Encomenda{
                 public estado?: string,
                 public cliente?: Cliente,
                 public senha?: string,
-               // public estacionamento?: Estacionamento
+                public doces?: Doce[] 
                 ){}
 }   

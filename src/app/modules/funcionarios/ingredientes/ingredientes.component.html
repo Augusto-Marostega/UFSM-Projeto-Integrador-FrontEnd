@@ -1,4 +1,5 @@
 <div class="container">
+    <br />
     <div *ngIf="erro == true">
         <div class="alert alert-danger" role="alert">
             {{msg}}
@@ -10,13 +11,14 @@
             {{msg}}
         </div>
     </div>
-    <br/>
+    <br />
     <div class="content" role="main">
         <div class="form-group">
             <div class="">
                 <label for="search-text">Filtrar ingrediente pelo nome:</label>
-                <input type="search" class="card border border-primary form-control" id="search-text" aria-describedby="search-text"
-                    [(ngModel)]="searchText" placeholder="Digite o texto para filtrar" autofocus>
+                <input type="search" class="card border border-primary form-control" id="search-text"
+                    aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Digite o texto para filtrar"
+                    autofocus>
             </div>
         </div>
     </div>
