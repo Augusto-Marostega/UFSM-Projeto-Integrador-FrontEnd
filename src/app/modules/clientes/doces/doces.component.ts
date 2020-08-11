@@ -14,6 +14,8 @@ export class DocesComponent implements OnInit {
   //title = 'angular-text-search-highlight';
   searchText = '';
 
+
+
   public doces: Doce[];
 
   constructor(private rotaAtiva: ActivatedRoute,
@@ -23,7 +25,7 @@ export class DocesComponent implements OnInit {
   erro: boolean;
   sucess: boolean;
   msg: string;
-  quantidade: number;
+  //quantidade: number;
 
   ngOnInit(): void {
 
@@ -31,13 +33,37 @@ export class DocesComponent implements OnInit {
     this.sucess = false;
     this.msg = '';
 
-    this.quantidade = 5;
+    //this.quantidade = 5;
 
     this.doceService.getDoces().subscribe(dados => {
       this.doces = dados;
     });
 
 
+  }
+
+  verificarQuantidade(quantidade: number) {
+    if (Number.isNaN(quantidade)) {
+      quantidade = 5;
+    }
+    if (quantidade < 5) {
+      quantidade = 5;
+    }
+    if (quantidade > 1000) {
+      quantidade = 1000;
+    }
+    return quantidade;
+  }
+
+  addQuantidade(quantidade: number) {
+    quantidade = quantidade + 5;
+    quantidade = this.verificarQuantidade(quantidade);
+    return quantidade;
+  }
+  remQuantidade(quantidade: number) {
+    quantidade = quantidade - 5;
+    quantidade = this.verificarQuantidade(quantidade);
+    return quantidade;
   }
 
   teste() {

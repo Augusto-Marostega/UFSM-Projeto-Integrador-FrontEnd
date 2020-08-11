@@ -8,7 +8,8 @@ export class Doce{
         public descricao?: string,
         public foto?: string,
         public preco?: number,
-        public ingredientes?: Ingrediente[]
+        public ingredientes?: Ingrediente[],
+        public quantidade?: number
     ){}
     
 }
