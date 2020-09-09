@@ -1,6 +1,6 @@
 import { Ingrediente } from './ingrediente.model';
 
-export class Doce{
+export class DoceQtd{
     constructor(
         public id?: number,
         public nome?: string,
@@ -8,7 +8,8 @@ export class Doce{
         public descricao?: string,
         public foto?: string,
         public preco?: number,
-        public ingredientes?: Ingrediente[]
+        public ingredientes?: Ingrediente[],
+        public quantidade?: number
     ){}
     
 }

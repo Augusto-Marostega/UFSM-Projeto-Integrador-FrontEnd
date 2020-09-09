@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Doce } from 'src/app/shared/models/doce.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoceService } from 'src/app/shared/services/doce.service';
+import { DoceQtd } from 'src/app/shared/models/doceQtd.model';
 
 @Component({
   selector: 'app-doces',
@@ -16,7 +17,7 @@ export class DocesComponent implements OnInit {
 
 
 
-  public doces: Doce[];
+  public doces: DoceQtd[];
 
   constructor(private rotaAtiva: ActivatedRoute,
     private doceService: DoceService,
@@ -37,6 +38,9 @@ export class DocesComponent implements OnInit {
 
     this.doceService.getDoces().subscribe(dados => {
       this.doces = dados;
+      this.doces.forEach(element => {
+        element.quantidade = 5;
+      });
     });
 
 
@@ -81,11 +85,18 @@ export class DocesComponent implements OnInit {
     console.log(doce);
     return;
     if (window.confirm('Tem certeza que deseja excluir o doce "' + doce.nome + '" ?')) {
-      this.excluirDoce(doce);
+      this.addDoceCarrinho(doce);
     }
   }
 
-  excluirDoce(doce) {
+  addDoceCarrinho(doce: DoceQtd) {
+
+
+    //sessionStorage.setItem('carrinho', doce);
+
+    
+
+
     return;
 
     this.doceService.deletar(doce.id)

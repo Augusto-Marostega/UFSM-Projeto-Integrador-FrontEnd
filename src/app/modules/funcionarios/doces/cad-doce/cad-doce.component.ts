@@ -115,7 +115,7 @@ export class CadDoceComponent implements OnInit {
 
     if (this.doce.nome.length >= 4 && this.doce.descricao.length >= 4 &&
       this.doce.peso >= 1 && this.doce.peso != null &&
-      this.doce.foto.length >= 4 && this.doce.preco != null && this.doce.preco >= 1) {
+      this.doce.foto.length >= 4 && this.doce.preco != null && this.doce.preco >= 0.10) {
 
       this.doce.ingredientes = this.ingredientesComSelecao;
       console.log(this.doce);
@@ -138,7 +138,7 @@ export class CadDoceComponent implements OnInit {
     } else {
       this.erro = true;
       this.sucess = false;
-      this.msg = 'Erro ao cadastrar doce "' + this.doce.nome + '", todos os campos säo obrigatórios e precisam ter pelo menos 4 digitos.';
+      this.msg = 'Erro ao cadastrar doce "' + this.doce.nome + '", todos os campos säo obrigatórios, precisam ter pelo menos 4 digitos e o preço precisa ser igual ou maior que R$: 0,10.';
     }
   }
 

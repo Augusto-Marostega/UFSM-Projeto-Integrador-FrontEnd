@@ -38,9 +38,6 @@ export class DocesComponent implements OnInit {
 
   }
 
-  teste() {
-    console.log(this.doces);
-  }
 
   atualizarLista() {
     this.doceService.getDoces().subscribe(dados => {

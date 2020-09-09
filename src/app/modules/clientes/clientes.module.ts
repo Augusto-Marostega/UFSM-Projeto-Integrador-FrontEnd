@@ -9,6 +9,7 @@ import { EncomendasComponent } from './encomendas/encomendas.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { FilterPipeDoceByNameModule } from 'src/app/shared/pipes/filterDoceByNamePipe.module';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
  
 
@@ -20,7 +21,8 @@ import { FilterPipeDoceByNameModule } from 'src/app/shared/pipes/filterDoceByNam
     EditCliComponent,
     DocesComponent,
     EncomendasComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarrinhoComponent
   ],
   imports: [
     CommonModule,

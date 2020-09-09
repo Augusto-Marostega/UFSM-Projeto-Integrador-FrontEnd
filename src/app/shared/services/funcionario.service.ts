@@ -13,18 +13,19 @@ export class FuncionarioService {
 
   constructor(private http: HttpClient) { }
 
+  /*
   cadastrar(cliente: Funcionario) {
     return this.http.post(`${this.API}/cadastrar`, cliente).pipe();
-  }
+  }*/
 
   editar(funcionario) {
     return this.http.put(`${this.API}/editar`, funcionario).pipe(take(1));
   }
-
+  /*
   deletar(id) {
     console.log('esse cliente:', id);
     return this.http.delete(`${this.API}/deletar/${id}`).pipe();
-  }
+  }*/
 
   getFuncionario(id) {
     return this.http.get<Funcionario>(`${this.API}/${id}`).pipe(take(1));
