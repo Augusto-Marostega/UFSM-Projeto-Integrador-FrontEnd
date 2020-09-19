@@ -14,6 +14,7 @@ import { CadDoceComponent } from './doces/cad-doce/cad-doce.component';
 import { EditDoceComponent } from './doces/edit-doce/edit-doce.component';
 import { FilterPipeDoceByNameModule } from 'src/app/shared/pipes/filterDoceByNamePipe.module';
 import { EditFuncComponent } from './edit-func/edit-func.component';
+import { DetalhesComponent } from './encomendas/detalhes/detalhes.component';
 
 
 
@@ -28,7 +29,8 @@ import { EditFuncComponent } from './edit-func/edit-func.component';
     CadIngredienteComponent,
     EditIngredienteComponent,
     CadDoceComponent,
-    EditDoceComponent
+    EditDoceComponent,
+    DetalhesComponent
   ],
   imports: [
     CommonModule,

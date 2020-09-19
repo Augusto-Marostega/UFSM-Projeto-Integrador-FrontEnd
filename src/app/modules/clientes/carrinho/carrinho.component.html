@@ -1,1 +1,73 @@
-<p>carrinho works!</p>
+<div class="container">
+    <br />
+    <div *ngIf="erro == true">
+        <div class="alert alert-danger" role="alert">
+            {{msg}}
+        </div>
+    </div>
+
+    <div *ngIf="sucess == true">
+        <div class="alert alert-success" role="alert">
+            {{msg}}
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <table class="table table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço un</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doce of doces">
+                    <th scope="row">{{doce.id}}</th>
+                    <td><img src="{{doce.foto}}" class="card-img" style="max-height: 55px; max-width: 70px;"
+                            alt="{{doce.nome}}"></td>
+                    <td>{{doce.nome}}</td>
+                    <td>{{doce.descricao}}</td>
+                    <td><button class="btn minus1 btn-primary btn-lg"
+                            (click)="doce.quantidade = remQuantidade(doce.quantidade, doce)"><strong>-</strong></button>
+                        <input class="quantity-wrappe" style="text-align:center; width: 100px; height: 49px;"
+                            id="id_form-0-quantity" min="5" max="1000" name="form-0-quantity" type="number" value="5"
+                            [(ngModel)]="doce.quantidade"
+                            (change)="doce.quantidade = verificarQuantidade(doce.quantidade, doce)">
+                        <button class="btn add1 btn-primary btn-lg"
+                            (click)="doce.quantidade = addQuantidade(doce.quantidade, doce)"><strong>+</strong></button>
+                    </td>
+                    <td>R$: {{doce.preco}}</td>
+                    <td>R$: {{doce.preco*doce.quantidade}}</td>
+                    <td><button class="btn btn-danger "
+                        (click)="removerItemCarrinho(doce)">Remover Item</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div *ngIf="doces && doces.length > 0" class="row col-md-12">
+            <div class=" align-items-end bd-highlight mb-3 col-10">
+
+                <p type="text" class=" ml-1 mr-2 mt-2">
+                    Quantidade total: {{quantidadeTotal}}</p>
+                <p type="text" class=" ml-1 mr-2 mt-2">
+                    Preço total R$: {{precoTotal}}</p>
+            </div>
+            <div class="float-right d-flex align-items-end bd-highlight mb-5 col-2">
+                <button type="submit" class="btn btn-warning btn-lg ml-5 mr-2 mt-2 novo-estilo"
+                    (click)="encomendarConfirmar()">
+                    Encomendar</button>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

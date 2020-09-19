@@ -3,6 +3,7 @@ import { Doce } from 'src/app/shared/models/doce.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoceService } from 'src/app/shared/services/doce.service';
 import { DoceQtd } from 'src/app/shared/models/doceQtd.model';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 
 @Component({
   selector: 'app-doces',
@@ -21,6 +22,7 @@ export class DocesComponent implements OnInit {
 
   constructor(private rotaAtiva: ActivatedRoute,
     private doceService: DoceService,
+    private carrinhoService: CarrinhoService,
     private rota: Router) { }
 
   erro: boolean;
@@ -81,42 +83,25 @@ export class DocesComponent implements OnInit {
   }
 
 
-  encomendarConfirmar(doce) {
-    console.log(doce);
+  AddCarrinho(doce) {
+    //console.log(doce);
+    let mensagem: String;
+    mensagem = this.carrinhoService.addDoceCar(doce);
+
+    if(mensagem !== '' && mensagem){
+      alert(mensagem);
+    }
+
+
     return;
     if (window.confirm('Tem certeza que deseja excluir o doce "' + doce.nome + '" ?')) {
       this.addDoceCarrinho(doce);
     }
   }
 
+
   addDoceCarrinho(doce: DoceQtd) {
-
-
-    //sessionStorage.setItem('carrinho', doce);
-
-    
-
-
     return;
-
-    this.doceService.deletar(doce.id)
-      .subscribe(
-        sucess => {
-          this.erro = false;
-          this.sucess = true;
-          this.msg = 'Doce "' + doce.nome + '" excluído com sucesso';
-          alert('Doce "' + doce.nome + '" excluído com sucesso');
-          this.atualizarLista();
-
-        },
-        error => {
-          this.sucess = false;
-          this.erro = true;
-          this.msg = 'Erro ao excluir Doce.';
-          alert('Erro ao excluir Doce.');
-        }
-      )
-
   }
 
 }

@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { FilterPipeDoceByNameModule } from 'src/app/shared/pipes/filterDoceByNamePipe.module';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { DetalhesComponent } from './encomendas/detalhes/detalhes.component';
 
  
 
@@ -22,7 +23,8 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     DocesComponent,
     EncomendasComponent,
     NavbarComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    DetalhesComponent
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,42 @@
-<p>encomendas works!</p>
+<div class="container">
+    <br />
+    <div *ngIf="erro == true">
+        <div class="alert alert-danger" role="alert">
+            {{msg}}
+        </div>
+    </div>
+
+    <div *ngIf="sucess == true">
+        <div class="alert alert-success" role="alert">
+            {{msg}}
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <table class="table table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Quantidade total</th>
+                    <th scope="col">Preço total</th>
+                    <th scope="col">Data do pedido</th>
+                    <th scope="col">Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let encomenda of cliente.encomendas">
+                    <th scope="row">{{encomenda.id}}</th>
+                    <td>{{getUltimoEstado(encomenda.encomenda_estados)}}</td>
+                    <td>{{getQtdTotal(encomenda.encomenda_doces)}}</td>
+                    <td>R$: {{getPrecoTotal(encomenda.encomenda_doces)}}</td>
+                    <td>{{encomenda.data | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                    <td><a [routerLink]="['detalhes', encomenda.id]">Ver detalhes</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

@@ -9,6 +9,7 @@ import { FuncionariosModule } from './modules/funcionarios/funcionarios.module';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NaoLogadoModule } from './modules/nao-logado/nao-logado.module';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 
 
@@ -24,7 +25,8 @@ import { NaoLogadoModule } from './modules/nao-logado/nao-logado.module';
     ClientesModule,
     FuncionariosModule,
     NavbarModule,
-    NaoLogadoModule
+    NaoLogadoModule,
+    NgxWebstorageModule.forRoot()
     
   ],
   providers: [],

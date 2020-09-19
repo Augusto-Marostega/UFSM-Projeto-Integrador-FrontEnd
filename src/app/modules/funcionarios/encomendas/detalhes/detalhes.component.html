@@ -1,0 +1,105 @@
+<div class="container">
+    <br />
+    
+
+    <br />
+
+    <div class="row">
+        <table class="table table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Quantidade total</th>
+                    <th scope="col">Preço total</th>
+                    <th scope="col">Data do pedido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{encomenda.id}}</th>
+                    <td>{{getUltimoEstado(encomenda.encomenda_estados)}}</td>
+                    <td>{{getQtdTotal(encomenda.encomenda_doces)}}</td>
+                    <td>R$: {{getPrecoTotal(encomenda.encomenda_doces)}}</td>
+                    <td>{{encomenda.data | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <h3>
+        Itens da encomenda
+    </h3>
+    <div class="row">
+        <table class="table table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço un</th>
+                    <th scope="col">Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let encomenda_doce of encomenda.encomenda_doces">
+                    <th scope="row">{{encomenda_doce.doce.id}}</th>
+                    <td><img src="{{encomenda_doce.doce.foto}}" class="card-img"
+                            style="max-height: 55px; max-width: 70px;" alt="{{encomenda_doce.doce.nome}}"></td>
+                    <td>{{encomenda_doce.doce.nome}}</td>
+                    <td>{{encomenda_doce.doce.descricao}}</td>
+                    <td>{{encomenda_doce.quantidade}}</td>
+                    <td>R$: {{encomenda_doce.doce.preco}}</td>
+                    <td>R$: {{encomenda_doce.preco_un*encomenda_doce.quantidade}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <h3>
+        Histórico de estados da encomenda
+    </h3>
+    <div class="row">
+        <table class="table table-dark table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let estado of encomenda.encomenda_estados;">
+                    <th scope="row">{{estado.estado}}</th>
+                    <td>{{estado.data | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div *ngIf="erro == true">
+        <div class="alert alert-danger" role="alert">
+            {{msg}}
+        </div>
+    </div>
+
+    <div *ngIf="sucess == true">
+        <div class="alert alert-success" role="alert">
+            {{msg}}
+        </div>
+    </div>
+
+    <form class="mt-2" method="post" *ngIf="verificar == true">
+        <div class="form-group" >
+            <label for="exampleFormControlSelect1">Selecione um estado: </label>
+            <select class="form-control" id="novoEstado" name="novoEstado" [(ngModel)]="encomenda_estado.estado">
+                <option value="0">-- Selecione --</option>
+                <option *ngFor="let tiposDeEstado of tiposDeEstados" value="{{tiposDeEstado}}">
+                    {{tiposDeEstado}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success " (click)="cadastrarNovoEstado()">Adicionar Estado</button>
+    </form>
+
+</div>
